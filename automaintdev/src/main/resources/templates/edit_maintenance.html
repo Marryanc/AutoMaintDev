@@ -25,9 +25,9 @@
             <label for="mileage">Mileage:</label>
             <input type="number" id="mileage" th:field="*{mileage}" required/><br/>
 
-            <button type="submit">Save Changes</button>
+            <button type="submit" class="btn btn-save">Save Changes</button>
         </form>
-        <a th:href="@{/}" class="add-button">Back to Vehicle List</a>
+        <a th:href="@{/}" class="btn btn-add">Back to Vehicle List</a>
     </div>
 </body>
 </html>

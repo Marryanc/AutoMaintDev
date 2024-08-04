@@ -9,18 +9,13 @@ body {
     height: 100vh;
 }
 
-.login-container {
+.register-container {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
-}
-
-.error-message, .logout-message {
-    color: red;
-    margin-bottom: 10px;
 }
 
 h2 {
@@ -54,25 +49,25 @@ h2 {
     color: #fff;
 }
 
-.btn-login {
+.btn-register {
     background-color: #5cb85c;
     border: none;
     cursor: pointer;
 }
 
-.btn-login:hover {
+.btn-register:hover {
     background-color: #4cae4c;
 }
 
-.create-account {
+.login-link {
     margin-top: 20px;
 }
 
-.btn-create-account {
+.btn-login-link {
     color: #77aaff;
     text-decoration: none;
 }
 
-.btn-create-account:hover {
+.btn-login-link:hover {
     text-decoration: underline;
 }

@@ -33,14 +33,14 @@
                     <td th:text="${vehicle.vyear}">Year</td>
                     <td th:text="${vehicle.vin}">VIN</td>
                     <td class="actions">
-                        <a th:href="@{/vehicle/{id}(id=${vehicle.id})}">Details</a>
-                        <a th:href="@{/vehicle/edit/{id}(id=${vehicle.id})}">Edit</a>
-                        <a th:href="@{/vehicle/delete/{id}(id=${vehicle.id})}">Delete</a>
+                        <a th:href="@{/vehicle/{id}(id=${vehicle.id})}" class="btn btn-details">Details</a>
+                        <a th:href="@{/vehicle/edit/{id}(id=${vehicle.id})}" class="btn btn-edit">Edit</a>
+                        <a th:href="@{/vehicle/delete/{id}(id=${vehicle.id})}" class="btn btn-delete">Delete</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <a href="/vehicle/add" class="add-button">Add New Vehicle</a>
+        <a href="/vehicle/add" class="btn btn-add">Add New Vehicle</a>
     </div>
 </body>
 </html>

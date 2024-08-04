@@ -71,7 +71,7 @@ public class VehicleController {
         MaintenanceRecord maintenanceRecord = new MaintenanceRecord();
         maintenanceRecord.setVehicleId(vehicleId);
         model.addAttribute("maintenanceRecord", maintenanceRecord);
-        return "add_maintenace";
+        return "add_maintenance";
     }
 
     @PostMapping("/maintenace/add")

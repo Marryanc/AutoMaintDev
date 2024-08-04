@@ -34,14 +34,14 @@
                     <td th:text="${record.description}">Description</td>
                     <td th:text="${record.mileage}">Mileage</td>
                     <td>
-                        <a th:href="@{/maintenace/edit/{id}(id=${record.id})}">Edit</a>
-                        <a th:href="@{/maintenace/delete/{id}(id=${record.id})}">Delete</a>
+                        <a th:href="@{/maintenace/edit/{id}(id=${record.id})}" class="btn btn-edit">Edit</a>
+                        <a th:href="@{/maintenace/delete/{id}(id=${record.id})}" class="btn btn-delete">Delete</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <a th:href="@{/maintenace/add/{vehicleId}(vehicleId=${vehicle.id})}" class="add-button">Add Maintenance Record</a>
-        <a th:href="@{/}" class="add-button">Back to Vehicle List</a>
+        <a th:href="@{/maintenace/add/{vehicleId}(vehicleId=${vehicle.id})}" class="btn btn-add">Add Maintenance Record</a>
+        <a th:href="@{/}" class="btn btn-add">Back to Vehicle List</a>
     </div>
 </body>
 </html>

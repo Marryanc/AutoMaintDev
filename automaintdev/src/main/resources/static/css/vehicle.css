@@ -1,5 +1,6 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
@@ -11,21 +12,33 @@ body {
     overflow: hidden;
 }
 
+/* Header Styles */
 header {
     background: #333;
     color: #fff;
-    padding-top: 30px;
-    min-height: 70px;
-    border-bottom: #77aaff 3px solid;
+    padding: 20px 0;
+    border-bottom: 3px solid #77aaff;
 }
 
-header a {
+header h1 {
+    margin: 0;
+    display: inline-block;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header nav a {
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 16px;
+    margin-left: 15px;
 }
 
+/* Table Styles */
 table {
     width: 100%;
     margin-top: 20px;
@@ -54,16 +67,80 @@ tr:hover {
     background-color: #ddd;
 }
 
-.add-button {
+/* Button Styles */
+.btn {
     display: inline-block;
-    margin-top: 20px;
     padding: 10px 20px;
-    background-color: #77aaff;
-    color: #fff;
     text-decoration: none;
     border-radius: 5px;
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
 }
 
-.add-button:hover {
-    background-color: #333;
+.btn-add {
+    background-color: #77aaff;
+}
+
+.btn-add:hover {
+    background-color: #555;
+}
+
+.btn-details {
+    background-color: #5bc0de;
+}
+
+.btn-details:hover {
+    background-color: #46b8da;
+}
+
+.btn-edit {
+    background-color: #f0ad4e;
+}
+
+.btn-edit:hover {
+    background-color: #ec971f;
+}
+
+.btn-delete {
+    background-color: #d9534f;
+}
+
+.btn-delete:hover {
+    background-color: #c9302c;
+}
+
+.btn-save {
+    background-color: #5cb85c;
+}
+
+.btn-save:hover {
+    background-color: #4cae4c;
+}
+
+/* Form Styles */
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+p strong {
+    font-weight: bold;
 }
