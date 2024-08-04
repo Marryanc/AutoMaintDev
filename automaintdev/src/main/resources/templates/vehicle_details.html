@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Details</title>
+    <link rel="stylesheet" th:href="@{/css/vehicle.css}"/>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Vehicle Details</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div>
+            <p><strong>Make:</strong> <span th:text="${vehicle.make}">Make</span></p>
+            <p><strong>Model:</strong> <span th:text="${vehicle.model}">Model</span></p>
+            <p><strong>Year:</strong> <span th:text="${vehicle.vyear}">Year</span></p>
+            <p><strong>VIN:</strong> <span th:text="${vehicle.vin}">VIN</span></p>
+        </div>
+        <h2>Maintenance Records</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Mileage</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="record : ${maintenanceRecords}">
+                    <td th:text="${record.date}">Date</td>
+                    <td th:text="${record.description}">Description</td>
+                    <td th:text="${record.mileage}">Mileage</td>
+                    <td>
+                        <a th:href="@{/maintenace/edit/{id}(id=${record.id})}">Edit</a>
+                        <a th:href="@{/maintenace/delete/{id}(id=${record.id})}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/maintenace/add/{vehicleId}(vehicleId=${vehicle.id})}" class="add-button">Add Maintenance Record</a>
+        <a th:href="@{/}" class="add-button">Back to Vehicle List</a>
+    </div>
+</body>
+</html>

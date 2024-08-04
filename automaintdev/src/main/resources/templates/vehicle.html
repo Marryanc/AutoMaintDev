@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle List</title>
+    <link rel="stylesheet" th:href="@{/css/vehicle.css}"/>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Vehicle List</h1>
+        </div>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>VIN</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="vehicle : ${vehicles}">
+                    <td th:text="${vehicle.make}">Make</td>
+                    <td th:text="${vehicle.model}">Model</td>
+                    <td th:text="${vehicle.vyear}">Year</td>
+                    <td th:text="${vehicle.vin}">VIN</td>
+                    <td class="actions">
+                        <a th:href="@{/vehicle/{id}(id=${vehicle.id})}">Details</a>
+                        <a th:href="@{/vehicle/edit/{id}(id=${vehicle.id})}">Edit</a>
+                        <a th:href="@{/vehicle/delete/{id}(id=${vehicle.id})}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/vehicle/add" class="add-button">Add New Vehicle</a>
+    </div>
+</body>
+</html>
