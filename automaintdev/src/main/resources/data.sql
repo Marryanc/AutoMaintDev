@@ -8,3 +8,17 @@ INSERT INTO maintenance_record (vehicle_id, date, description, mileage) VALUES
 (1, '2023-06-15', 'Tire Rotation', 47000),
 (2, '2023-02-20', 'Brake Pads Replacement', 30000),
 (3, '2023-05-25', 'Battery Replacement', 15000);
+
+-- Insert roles
+INSERT INTO sec_role (roleName) VALUES ('ROLE_USER');
+INSERT INTO sec_role (roleName) VALUES ('ROLE_ADMIN');
+
+-- Insert a test user
+INSERT INTO sec_user (email, encryptedPassword, enabled) VALUES ('admin@admin.com', '$2a$12$EKj5ZjubTLzBvw2VMcXtqu27x3/r.9cf9K8KGzKaESZxxH4tQ51ZK', 1);
+
+-- Note: The password 'password' is encrypted using BCrypt with a strength of 10. You can use any BCrypt library to generate your own.
+
+-- Insert user-role associations
+INSERT INTO user_role (userId, roleId) VALUES (1, 1); -- Assuming the userId of the inserted user is 1 and roleId for ROLE_USER is 1
+INSERT INTO user_role (userId, roleId) VALUES (1, 2); -- Assuming roleId for ROLE_ADMIN is 2
+

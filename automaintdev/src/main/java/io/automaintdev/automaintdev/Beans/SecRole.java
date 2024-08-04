@@ -8,12 +8,8 @@ import lombok.RequiredArgsConstructor;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class User {
-    private Long userId;
+public class SecRole {
+    private Long roleId;
     @NonNull
-    private String email;
-    @NonNull
-    private String encryptedPassword;
-    @NonNull
-    private Boolean enabled;
+    private String roleName;
 }
