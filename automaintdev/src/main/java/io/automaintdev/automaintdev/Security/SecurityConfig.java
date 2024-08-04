@@ -23,8 +23,9 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/h2-console/**", "/", "/css/**", "/js/**").permitAll()
-                .requestMatchers("/vehicle/**").hasRole("USER")
+                .requestMatchers("/css/**", "/js/**").permitAll()
+                .requestMatchers("/", "/vehicle/**").hasRole("USER")
+                .requestMatchers("/h2-console/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )
             .formLogin(formLogin -> formLogin
