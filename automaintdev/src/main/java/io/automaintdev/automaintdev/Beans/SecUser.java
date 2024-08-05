@@ -1,5 +1,7 @@
 package io.automaintdev.automaintdev.Beans;
 
+import java.util.List;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -16,4 +18,5 @@ public class SecUser {
     private String encryptedPassword;
     @NonNull
     private Boolean enabled;
+    private List<SecRole> roles = null;
 }

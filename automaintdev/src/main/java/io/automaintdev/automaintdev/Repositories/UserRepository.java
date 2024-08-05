@@ -39,6 +39,17 @@ public class UserRepository {
         return jdbc.queryForList(query, namedParameters, String.class);
     }
 
+    public List<SecRole> getAllRolesById(Long userId) {
+        String query = "SELECT sec_role.* " +
+                       "FROM user_role, sec_role " +
+                       "WHERE user_role.roleId = sec_role.roleId " +
+                       "AND user_role.userId = :userId";
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource("userId", userId);
+    
+        return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<>(SecRole.class));
+    }
+    
+
     public void saveUser(SecUser user) {
         String query = "INSERT INTO sec_user (email, encryptedPassword, enabled) VALUES (:email, :password, :enabled)";
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
@@ -71,5 +82,23 @@ public class UserRepository {
         } catch (EmptyResultDataAccessException erdae) {
             return null;
         }
+    }
+
+    public List<SecUser> findAllUsers() {
+        String query = "SELECT * FROM sec_user";
+        List<SecUser> users = jdbc.query(query, new BeanPropertyRowMapper<>(SecUser.class));
+    
+        for (SecUser user : users) {
+            List<SecRole> roles = getAllRolesById(user.getUserId());
+            user.setRoles(roles);
+        }
+    
+        return users;
+    }
+
+    // Method to get all roles
+    public List<SecRole> findAllRoles() {
+        String query = "SELECT * FROM sec_role";
+        return jdbc.query(query, new BeanPropertyRowMapper<>(SecRole.class));
     }
 }

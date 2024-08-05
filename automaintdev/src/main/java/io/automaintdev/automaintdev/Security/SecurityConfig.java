@@ -33,7 +33,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/css/**", "/js/**", "/register").permitAll()
                 .requestMatchers("/", "/vehicle/**").hasRole("USER")
-                .requestMatchers("/h2-console/**").hasRole("ADMIN")
+                .requestMatchers("/h2-console/**", "/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )
             .formLogin(formLogin -> formLogin

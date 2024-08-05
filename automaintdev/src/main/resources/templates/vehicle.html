@@ -12,6 +12,7 @@
             <nav>
                 <a href="/" class="home-link">Home</a>
                 <a th:href="@{/logout}" class="logout-link">Logout</a>
+                <a th:href="@{/admin}" class="admin-link" th:if="${#strings.contains(#authentication.principal.authorities, 'ROLE_ADMIN')}">Admin Panel</a>
             </nav>
         </div>
     </header>

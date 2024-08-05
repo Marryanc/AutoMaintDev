@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}"/>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Admin Panel</h1>
+            <nav>
+                <a th:href="@{/}" class="home-link">Home</a>
+                <a th:href="@{/logout}" class="logout-link">Logout</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <h2>Assign Roles</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Current Roles</th>
+                    <th>Assign New Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.email}">Email</td>
+                    <td>
+                        <ul>
+                            <li th:each="role : ${user.roles}" th:text="${role.roleName}">Role</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <form th:action="@{/admin/assignRole}" method="post">
+                            <input type="hidden" name="userId" th:value="${user.userId}"/>
+                            <select name="roleId">
+                                <option th:each="role : ${roles}" th:value="${role.roleId}" th:text="${role.roleName}">Role</option>
+                            </select>
+                            <button type="submit">Assign</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
