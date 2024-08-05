@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configurers.HeadersCon
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.access.AccessDeniedHandlerImpl;
 
 import io.automaintdev.automaintdev.Services.CustomUserDetailsService;
 
@@ -38,8 +40,18 @@ public class SecurityConfig {
                 .loginPage("/login")
                 .permitAll()
             )
+            .exceptionHandling(exceptionHandling -> exceptionHandling
+            .accessDeniedHandler(accessDeniedHandler())
+            )
             .headers(h -> h.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
             .userDetailsService(userDetailsService);
         return http.build();
+    }
+
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler() {
+        AccessDeniedHandlerImpl accessDeniedHandler = new AccessDeniedHandlerImpl();
+        accessDeniedHandler.setErrorPage("/accessDenied");
+        return accessDeniedHandler;
     }
 }

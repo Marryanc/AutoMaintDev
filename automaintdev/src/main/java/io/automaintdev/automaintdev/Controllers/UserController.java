@@ -45,4 +45,9 @@ public class UserController {
 
         return "redirect:/login";
     }
+
+    @GetMapping("/accessDenied")
+    public String accessDenied() {
+        return "denied";
+    }
 }
