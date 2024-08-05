@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Panel</title>
-    <link rel="stylesheet" th:href="@{/css/admin.css}"/>
+    <link rel="stylesheet" th:href="@{/css/vehicle.css}"/>
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Admin Panel</h1>
             <nav>
-                <a th:href="@{/}" class="home-link">Home</a>
+                <a href="/" class="home-link">Home</a>
+                <a href="/h2-console" class="home-link">Console</a>
                 <a th:href="@{/logout}" class="logout-link">Logout</a>
             </nav>
         </div>
     </header>
     <div class="container">
-        <h2>Assign Roles</h2>
+        <h2>User Management</h2>
         <table>
             <thead>
                 <tr>
                     <th>Email</th>
-                    <th>Current Roles</th>
-                    <th>Assign New Role</th>
+                    <th>Roles</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,13 +34,20 @@
                             <li th:each="role : ${user.roles}" th:text="${role.roleName}">Role</li>
                         </ul>
                     </td>
-                    <td>
-                        <form th:action="@{/admin/assignRole}" method="post">
+                    <td class="actions">
+                        <form th:action="@{/admin/addRole}" method="post" style="display:inline;">
                             <input type="hidden" name="userId" th:value="${user.userId}"/>
                             <select name="roleId">
-                                <option th:each="role : ${roles}" th:value="${role.roleId}" th:text="${role.roleName}">Role</option>
+                                <option th:each="role : ${allRoles}" th:value="${role.roleId}" th:text="${role.roleName}">Role</option>
                             </select>
-                            <button type="submit">Assign</button>
+                            <button type="submit" class="btn btn-save">Add Role</button>
+                        </form>
+                        <form th:action="@{/admin/removeRole}" method="post" style="display:inline;">
+                            <input type="hidden" name="userId" th:value="${user.userId}"/>
+                            <select name="roleId">
+                                <option th:each="role : ${user.roles}" th:value="${role.roleId}" th:text="${role.roleName}">Role</option>
+                            </select>
+                            <button type="submit" class="btn btn-delete">Remove Role</button>
                         </form>
                     </td>
                 </tr>

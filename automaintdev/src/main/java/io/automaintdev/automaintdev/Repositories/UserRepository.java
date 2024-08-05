@@ -54,12 +54,11 @@ public class UserRepository {
         String query = "INSERT INTO sec_user (email, encryptedPassword, enabled) VALUES (:email, :password, :enabled)";
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         namedParameters.addValue("email", user.getEmail());
-        namedParameters.addValue("password", user.getEncryptedPassword()); // Pass encoded password
+        namedParameters.addValue("password", user.getEncryptedPassword());
         namedParameters.addValue("enabled", user.getEnabled());
 
         jdbc.update(query, namedParameters);
 
-        // Retrieve the generated userId
         Long userId = jdbc.queryForObject("SELECT userId FROM sec_user WHERE email = :email", namedParameters, Long.class);
         user.setUserId(userId);
     }
@@ -96,9 +95,17 @@ public class UserRepository {
         return users;
     }
 
-    // Method to get all roles
     public List<SecRole> findAllRoles() {
         String query = "SELECT * FROM sec_role";
         return jdbc.query(query, new BeanPropertyRowMapper<>(SecRole.class));
     }
+
+        public void removeUserRole(Long userId, Long roleId) {
+            String query = "DELETE FROM user_role WHERE userId = :userId AND roleId = :roleId";
+            MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+            namedParameters.addValue("userId", userId);
+            namedParameters.addValue("roleId", roleId);
+    
+            jdbc.update(query, namedParameters);
+        }
 }

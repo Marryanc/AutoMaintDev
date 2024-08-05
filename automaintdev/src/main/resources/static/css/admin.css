@@ -1,5 +1,6 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
@@ -7,39 +8,39 @@ body {
 
 .container {
     width: 80%;
-    margin: 0 auto;
-    padding: 20px;
+    margin: auto;
+    overflow: hidden;
 }
 
 header {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    border-bottom: 3px solid #77aaff;
 }
 
 header h1 {
     margin: 0;
+    display: inline-block;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
 }
 
 header nav a {
-    color: white;
-    margin: 0 15px;
+    color: #fff;
     text-decoration: none;
-}
-
-header nav a:hover {
-    text-decoration: underline;
-}
-
-h2 {
-    color: #333;
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-left: 15px;
 }
 
 table {
     width: 100%;
+    margin-top: 20px;
     border-collapse: collapse;
-    margin-bottom: 20px;
 }
 
 table, th, td {
@@ -47,31 +48,95 @@ table, th, td {
 }
 
 th, td {
-    padding: 8px;
+    padding: 12px;
     text-align: left;
 }
 
 th {
+    background-color: #333;
+    color: #fff;
+}
+
+tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
+tr:hover {
+    background-color: #ddd;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.btn-add {
+    background-color: #77aaff;
+}
+
+.btn-add:hover {
+    background-color: #555;
+}
+
+.btn-details {
+    background-color: #5bc0de;
+}
+
+.btn-details:hover {
+    background-color: #46b8da;
+}
+
+.btn-edit {
+    background-color: #f0ad4e;
+}
+
+.btn-edit:hover {
+    background-color: #ec971f;
+}
+
+.btn-delete {
+    background-color: #d9534f;
+}
+
+.btn-delete:hover {
+    background-color: #c9302c;
+}
+
+.btn-save {
+    background-color: #5cb85c;
+}
+
+.btn-save:hover {
+    background-color: #4cae4c;
+}
+
 form {
-    display: flex;
-    align-items: center;
+    margin-top: 20px;
 }
 
-form select {
-    margin-right: 10px;
+label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-form button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 3px;
 }
 
-form button:hover {
-    background-color: #45a049;
+p strong {
+    font-weight: bold;
 }

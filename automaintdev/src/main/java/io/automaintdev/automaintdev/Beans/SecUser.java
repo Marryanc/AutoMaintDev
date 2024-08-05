@@ -18,5 +18,6 @@ public class SecUser {
     private String encryptedPassword;
     @NonNull
     private Boolean enabled;
+    // Added this to hold the value of there roles when in admin pannel
     private List<SecRole> roles = null;
 }
