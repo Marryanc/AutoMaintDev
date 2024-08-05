@@ -20,23 +20,27 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    // Mapping for the custom login page
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
+    // Returns the page for registration and initiates and new secUser Object
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new SecUser());
         return "register";
     }
 
+    // Basic registration post mapping for the form
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("user") SecUser user) {
         user.setEncryptedPassword(passwordEncoder.encode(user.getEncryptedPassword()));
         user.setEnabled(true);
         userRepository.saveUser(user);
 
+        // This sets the user role on signup
         UserRole userRole = new UserRole();
         userRole.setUserId(user.getUserId());
         userRole.setRoleId(1L);
@@ -46,6 +50,7 @@ public class UserController {
         return "redirect:/login";
     }
 
+    // This is the route for when a user does not have permission
     @GetMapping("/accessDenied")
     public String accessDenied() {
         return "denied";

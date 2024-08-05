@@ -26,6 +26,8 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    // Security config based on the 7.0 example i found on spring docs
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -48,6 +50,8 @@ public class SecurityConfig {
         return http.build();
     }
 
+    // this initiates the bean for utilizing the accessDenied stuff
+    // this is how we serve the denied page when a user is denied
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
         AccessDeniedHandlerImpl accessDeniedHandler = new AccessDeniedHandlerImpl();
