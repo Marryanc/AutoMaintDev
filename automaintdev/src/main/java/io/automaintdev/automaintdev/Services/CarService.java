@@ -11,6 +11,7 @@ import io.automaintdev.automaintdev.Beans.CarSpecs;
 @Service
 public class CarService {
 
+    // Setup this logger in order to debug the api 
     private static final Logger logger = LoggerFactory.getLogger(CarService.class);
     private final RestTemplate restTemplate;
 
@@ -19,6 +20,7 @@ public class CarService {
         this.restTemplate = restTemplate;
     }
 
+    // This gets the data from the api and stores the json response into a carSpecs object
     public CarSpecs decodeVin(String vin) {
         String url = "https://carapi.app/api/vin/" + vin + "?verbose=no&all_trims=no";
         logger.info("Fetching VIN specs from URL: {}", url);
