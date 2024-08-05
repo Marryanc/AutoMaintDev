@@ -8,4 +8,5 @@ public class CarSpecs {
     private String make;
     private String model;
     private String trim;
+    private String vin;
 }

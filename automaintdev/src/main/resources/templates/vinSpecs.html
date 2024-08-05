@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>VIN Specifications</title>
     <link rel="stylesheet" th:href="@{/css/vehicle.css}"/>
-    <script type="text/javascript" th:src="@{/js/apiFetch.js}"></script>
 </head>
 <body>
     <header>
@@ -13,18 +12,23 @@
             <nav>
                 <a href="/" class="home-link">Home</a>
                 <a th:href="@{/logout}" class="logout-link">Logout</a>
-
             </nav>
         </div>
     </header>
     <div class="container">
-        <form id="vinForm">
+        <form action="#" th:action="@{/vin}" method="post">
             <label for="vin">Enter VIN:</label>
             <input type="text" id="vin" name="vin" required>
             <button type="submit" class="btn btn-add">Get Specs</button>
         </form>
-        <div id="vinSpecs">
-            
+        <div id="vinSpecs" th:if="${carSpecs}">
+            <h2>Specifications for VIN: <span th:text="${carSpecs.vin}"></span></h2>
+            <ul>
+                <li>Year: <span th:text="${carSpecs.year}">N/A</span></li>
+                <li>Make: <span th:text="${carSpecs.make}">N/A</span></li>
+                <li>Model: <span th:text="${carSpecs.model}">N/A</span></li>
+                <li>Trim: <span th:text="${carSpecs.trim}">N/A</span></li>
+            </ul>
         </div>
     </div>
 </body>
