@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>VIN Specifications</title>
+    <link rel="stylesheet" th:href="@{/css/vehicle.css}"/>
+    <script type="text/javascript" th:src="@{/js/apiFetch.js}"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>VIN Specifications</h1>
+            <nav>
+                <a href="/" class="home-link">Home</a>
+                <a th:href="@{/logout}" class="logout-link">Logout</a>
+
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <form id="vinForm">
+            <label for="vin">Enter VIN:</label>
+            <input type="text" id="vin" name="vin" required>
+            <button type="submit" class="btn btn-add">Get Specs</button>
+        </form>
+        <div id="vinSpecs">
+            <!-- VIN specs will be displayed here -->
+        </div>
+    </div>
+</body>
+</html>
